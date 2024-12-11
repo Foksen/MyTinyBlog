@@ -4,8 +4,8 @@ import Input from "@tailus-ui/Input";
 import Label from "@tailus-ui/Label";
 import Button from "@tailus-ui/Button";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
-import { requestAuth } from "../service/api";
+import { useEffect, useRef, useState } from "react";
+import { requestAuth, requestIsAuthorized } from "../service/api";
 
 function SectionLogin() {
   const router = useRouter();
@@ -76,6 +76,7 @@ function SectionLogin() {
             <Label htmlFor="password">Пароль</Label>
             <Input
               variant="soft"
+              type="password"
               id="password"
               className="bg-gray-800"
               value={formData.password}
@@ -93,6 +94,34 @@ function SectionLogin() {
 }
 
 export function LayoutLogin() {
+  const [loading, setLoading] = useState(true);
+
+  const router = useRouter();
+
+  const checkIsAuthorized = async (token) => {
+    try {
+      await requestIsAuthorized(token);
+      router.push("/admin-panel");
+    } catch (e) {
+      console.error(e);
+      localStorage.removeItem("token");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    let token = localStorage.getItem("token");
+    if (token != null) {
+      checkIsAuthorized(token);
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  if (loading == true) {
+    return null;
+  }
+
   return (
     <main className="min-h-screen w-full">
       <SectionLogin />

@@ -5,7 +5,7 @@ import { LayoutIndex } from "../src/layout/layout-index";
 export default function HomePage() {
   return (
     <div>
-      <Header title="Записки Игорька" />
+      <Header title="MyTinyBlog" />
       <LayoutIndex />
       <Footer />
     </div>

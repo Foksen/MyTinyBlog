@@ -154,6 +154,7 @@ export function LayoutAdmin() {
       setLoading(false);
     } catch (e) {
       console.error(e);
+      localStorage.removeItem("token");
       router.push("/login");
     }
   };

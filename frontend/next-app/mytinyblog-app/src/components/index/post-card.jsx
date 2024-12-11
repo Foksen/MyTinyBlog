@@ -1,21 +1,27 @@
 import { Text, Title } from "@tailus-ui/typography";
 import Card from "@tailus-ui/Card";
 import clsx from "clsx";
+import { parseMarkdownText } from "../../utils/parse-markdown";
 
 export function PostCard({ className, title, content, id }) {
   return (
     <Card
       variant="outlined"
       className={clsx(
-        "relative bg-gray-900 border-gray-800 hover:bg-gray-925 transition-colors",
+        "relative p-5 bg-gray-900 border-gray-800 hover:bg-gray-925 transition-colors",
         className
       )}
       href={`/posts/${id}`}
     >
-      <Title as="h4" className="line-clamp-3">
+      <Title as="h4" className="line-clamp-2 mb-2">
         {title}
       </Title>
-      <Text className="my-0 mt-3 line-clamp-4">{content}</Text>
+      {parseMarkdownText({
+        className: "space-y-[2px] overflow-hidden line-clamp-3",
+        text: content,
+        includeEmptyStrings: false,
+        applyStyling: false,
+      })}
     </Card>
   );
 }

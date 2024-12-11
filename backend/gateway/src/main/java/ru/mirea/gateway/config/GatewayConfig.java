@@ -51,6 +51,8 @@ public class GatewayConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/subscriptions").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/subscriptions").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider(userDetailsService))

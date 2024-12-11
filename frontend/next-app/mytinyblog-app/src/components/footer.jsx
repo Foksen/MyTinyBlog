@@ -13,7 +13,7 @@ export function Footer({ admin = false }) {
 
       {admin ? (
         <Image
-          src="logo/mtb-admin.svg"
+          src="/logo/mtb-admin.svg"
           width="87"
           height="58"
           className="justify-self-center h-10 w-auto "
@@ -21,7 +21,7 @@ export function Footer({ admin = false }) {
         />
       ) : (
         <Image
-          src="logo/mtb.svg"
+          src="/logo/mtb.svg"
           width="84"
           height="31"
           className="mb-1 justify-self-center h-6 w-auto "
