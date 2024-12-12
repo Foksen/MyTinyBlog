@@ -94,7 +94,7 @@ function AccountActions({ className }) {
   return (
     <div className={clsx("flex flex-col gap-3", className)}>
       <Image
-        src="/images/AvatarExample.jpg"
+        src="/images/1.jpg"
         width="192"
         height="192"
         className="mb-2 min-w-48 border border-gray-800 rounded-lg"

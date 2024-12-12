@@ -2,7 +2,6 @@ import { Text } from "@tailus-ui/typography";
 import Image from "next/image";
 import Button from "@tailus-ui/Button";
 import { IconArchieve } from "../../public/icons/icon-archieve";
-import { IconGitlab } from "../../public/icons/icon-gitlab";
 import { IconGithub } from "../../public/icons/icon-github";
 import { IconTelegram } from "../../public/icons/icon-telegram";
 import { IconLayers } from "../../public/icons/icon-layers";
@@ -14,6 +13,8 @@ import { AdminSectionSelector } from "../components/admin-panel/admin-section-se
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { requestIsAuthorized } from "../service/api";
+import { IconEmail } from "../../public/icons/icon-email";
+import { IconSettings } from "../../public/icons/icon-settings";
 
 function AsidePanelLink({
   className,
@@ -65,6 +66,13 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
         />
         <ul className="flex flex-col gap-1 mt-6">
           <AsidePanelLink
+            title="Настройки блога"
+            icon={<IconSettings strokeWidth="4" />}
+            isActive={currentSection == "settings"}
+            handleSectionChange={() => handleSectionChange("settings")}
+          />
+
+          <AsidePanelLink
             title="Список постов"
             icon={<IconArchieve strokeWidth="4" />}
             isActive={currentSection == "posts"}
@@ -73,14 +81,14 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
 
           <AsidePanelLink
             title="Администраторы"
-            icon={<IconGitlab strokeWidth="4" />}
+            icon={<IconUser strokeWidth="4" />}
             isActive={currentSection == "admins"}
             handleSectionChange={() => handleSectionChange("admins")}
           />
 
           <AsidePanelLink
-            title="Подписчики"
-            icon={<IconUser strokeWidth="4" />}
+            title="Рассылка"
+            icon={<IconEmail strokeWidth="4" />}
             isActive={currentSection == "subscribers"}
             handleSectionChange={() => handleSectionChange("subscribers")}
             disabled
@@ -144,7 +152,7 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
 export function LayoutAdmin() {
   const [loading, setLoading] = useState(true);
 
-  const [currentSection, setCurrentSection] = useState("posts");
+  const [currentSection, setCurrentSection] = useState("settings");
 
   const router = useRouter();
 

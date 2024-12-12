@@ -145,7 +145,7 @@ const ADMIN_INFOS = [
 export function AdminSectionAdmins() {
   return (
     <section>
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between">
         <Title as="h1" size="2xl" weight="bold">
           Администраторы
         </Title>
