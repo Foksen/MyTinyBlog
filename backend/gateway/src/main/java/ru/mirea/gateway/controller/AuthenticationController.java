@@ -3,7 +3,8 @@ package ru.mirea.gateway.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import ru.mirea.gateway.dto.AuthenticationRequest;
+import ru.mirea.gateway.dto.SignInRequest;
+import ru.mirea.gateway.dto.SignUpRequest;
 import ru.mirea.gateway.service.AuthenticationService;
 import ru.mirea.gateway.service.JwtService;
 
@@ -15,18 +16,18 @@ public class AuthenticationController {
     @Autowired
     private JwtService jwtService;
 
-    @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-        return ResponseEntity.ok(authenticationService.login(authenticationRequest));
+    @PostMapping("/sign-in")
+    public ResponseEntity<?> signIn(@RequestBody SignInRequest signInRequest) throws Exception {
+        return ResponseEntity.ok(authenticationService.signIn(signInRequest));
     }
 
     @PostMapping("/sign-up")
-    public ResponseEntity<?> signUp(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
-        return ResponseEntity.ok(authenticationService.signUp(authenticationRequest));
+    public ResponseEntity<?> signUp(@RequestBody SignUpRequest signUpRequest) throws Exception {
+        return ResponseEntity.ok(authenticationService.signUp(signUpRequest));
     }
 
     @GetMapping("/is-authorized")
-    public ResponseEntity<?> test() {
+    public ResponseEntity<?> isAuthorized() {
         return ResponseEntity.ok("You're authorized :)");
     }
 }

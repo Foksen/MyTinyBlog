@@ -66,17 +66,17 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
         />
         <ul className="flex flex-col gap-1 mt-6">
           <AsidePanelLink
-            title="Настройки блога"
-            icon={<IconSettings strokeWidth="4" />}
-            isActive={currentSection == "settings"}
-            handleSectionChange={() => handleSectionChange("settings")}
-          />
-
-          <AsidePanelLink
             title="Список постов"
             icon={<IconArchieve strokeWidth="4" />}
             isActive={currentSection == "posts"}
             handleSectionChange={() => handleSectionChange("posts")}
+          />
+
+          <AsidePanelLink
+            title="Настройки блога"
+            icon={<IconSettings strokeWidth="4" />}
+            isActive={currentSection == "settings"}
+            handleSectionChange={() => handleSectionChange("settings")}
           />
 
           <AsidePanelLink
@@ -152,7 +152,7 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
 export function LayoutAdmin() {
   const [loading, setLoading] = useState(true);
 
-  const [currentSection, setCurrentSection] = useState("settings");
+  const [currentSection, setCurrentSection] = useState("admins");
 
   const router = useRouter();
 

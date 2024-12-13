@@ -8,7 +8,7 @@ export function IconSettings({ className, strokeWidth }) {
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <g clip-path="url(#clip0_25_33)">
+      <g clipPath="url(#clip0_25_33)">
         <path
           d="M24 30C27.3137 30 30 27.3137 30 24C30 20.6863 27.3137 18 24 18C20.6863 18 18 20.6863 18 24C18 27.3137 20.6863 30 24 30Z"
           stroke="currentColor"

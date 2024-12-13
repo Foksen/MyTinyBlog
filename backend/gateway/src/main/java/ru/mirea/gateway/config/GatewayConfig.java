@@ -49,7 +49,7 @@ public class GatewayConfig {
                     return corsConfiguration;
                 }))
                 .authorizeHttpRequests(request -> request
-                        .requestMatchers("/auth/login").permitAll()
+                        .requestMatchers("/auth/sign-in").permitAll()
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/subscriptions").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/subscriptions").permitAll()

@@ -1,9 +1,10 @@
 package ru.mirea.gateway.service;
 
-import ru.mirea.gateway.dto.AuthenticationRequest;
+import ru.mirea.gateway.dto.SignInRequest;
 import ru.mirea.gateway.dto.AuthenticationResponse;
+import ru.mirea.gateway.dto.SignUpRequest;
 
 public interface AuthenticationService {
-    AuthenticationResponse login(AuthenticationRequest request) throws Exception;
-    AuthenticationResponse signUp(AuthenticationRequest request) throws Exception;
+    AuthenticationResponse signIn(SignInRequest request) throws Exception;
+    AuthenticationResponse signUp(SignUpRequest request) throws Exception;
 }

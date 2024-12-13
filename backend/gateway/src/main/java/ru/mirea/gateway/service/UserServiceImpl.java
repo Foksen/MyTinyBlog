@@ -6,8 +6,10 @@ import org.springframework.stereotype.Service;
 import ru.mirea.gateway.model.User;
 import ru.mirea.gateway.repository.UserRepository;
 
+import java.util.List;
+
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
@@ -23,5 +25,17 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAllByOrderByIdAsc();
+    }
+
+    @Override
+    public void delete(long id) {
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+        }
     }
 }

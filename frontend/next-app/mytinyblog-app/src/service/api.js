@@ -15,7 +15,7 @@ export const requestIsAuthorized = async (token) => {
 };
 
 export const requestAuth = async (authRequest) => {
-  const uri = `${URL}/auth/login`;
+  const uri = `${URL}/auth/sign-in`;
   const res = await fetch(uri, {
     method: "POST",
     headers: {
@@ -26,6 +26,23 @@ export const requestAuth = async (authRequest) => {
   });
   if (!res.ok) {
     throw new Error("Failed to login");
+  }
+  return res.json();
+};
+
+export const requestRegister = async (body, token) => {
+  const uri = `${URL}/auth/sign-up`;
+  const res = await fetch(uri, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: token,
+    },
+    body: body,
+  });
+  if (!res.ok) {
+    throw new Error("Failed to register");
   }
   return res.json();
 };
@@ -130,4 +147,35 @@ export const requestCreateSubscription = async (postRequest) => {
     throw new Error("Failed to create subscription");
   }
   return res.json();
+};
+
+export const requestGetUsers = async (token) => {
+  const uri = `${URL}/users`;
+  const res = await fetch(uri, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: token,
+    },
+  });
+  if (!res.ok) {
+    throw new Error("Failed to get users");
+  }
+  return res.json();
+};
+
+export const requestDeleteUser = async (id, token) => {
+  const uri = `${URL}/users/${id}`;
+  const res = await fetch(uri, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: token,
+    },
+  });
+  if (!res.ok) {
+    throw new Error("Failed to delete user");
+  }
 };
