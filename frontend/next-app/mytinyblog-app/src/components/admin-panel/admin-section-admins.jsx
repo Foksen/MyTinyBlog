@@ -7,7 +7,6 @@ import DropdownMenu from "@tailus-ui/DropdownMenu";
 import { IconMoreVertical } from "../../../public/icons/icon-more-vertical";
 import { IconTrash } from "../../../public/icons/icon-trash";
 import {
-  requestCreateUser,
   requestDeleteUser,
   requestGetUsers,
   requestRegister,

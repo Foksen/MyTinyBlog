@@ -91,7 +91,6 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
             icon={<IconEmail strokeWidth="4" />}
             isActive={currentSection == "subscribers"}
             handleSectionChange={() => handleSectionChange("subscribers")}
-            disabled
           />
 
           <AsidePanelLink
@@ -152,7 +151,7 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
 export function LayoutAdmin() {
   const [loading, setLoading] = useState(true);
 
-  const [currentSection, setCurrentSection] = useState("admins");
+  const [currentSection, setCurrentSection] = useState("subscribers");
 
   const router = useRouter();
 

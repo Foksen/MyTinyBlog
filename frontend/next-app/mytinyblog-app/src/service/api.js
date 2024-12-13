@@ -149,6 +149,38 @@ export const requestCreateSubscription = async (postRequest) => {
   return res.json();
 };
 
+export const requestGetSubscriptions = async (token) => {
+  const uri = `${URL}/subscriptions`;
+  const res = await fetch(uri, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: token,
+    },
+  });
+  if (!res.ok) {
+    throw new Error("Failed to get subscriptions");
+  }
+  return res.json();
+};
+
+export const requestDeleteSubscription = async (id, token) => {
+  const uri = `${URL}/subscriptions/${id}`;
+  const res = await fetch(uri, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "*",
+      Authorization: token,
+    },
+  });
+  if (!res.ok) {
+    throw new Error("Failed to delete subscription");
+  }
+  return res.json();
+};
+
 export const requestGetUsers = async (token) => {
   const uri = `${URL}/users`;
   const res = await fetch(uri, {
