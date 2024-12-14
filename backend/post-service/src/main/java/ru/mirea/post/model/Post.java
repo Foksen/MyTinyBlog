@@ -23,6 +23,4 @@ public class Post {
     private String content;
 
     private Instant creationDate;
-
-    private long creatorId;
 }
