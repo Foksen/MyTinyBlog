@@ -61,8 +61,8 @@ public class GatewayConfig {
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider(userDetailsService))
-                .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .addFilterBefore(metricsFilter, JwtAuthenticationFilter.class);
+                .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                // .addFilterBefore(metricsFilter, JwtAuthenticationFilter.class);
         return http.build();
     }
 

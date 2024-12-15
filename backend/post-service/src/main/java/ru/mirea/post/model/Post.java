@@ -2,6 +2,7 @@ package ru.mirea.post.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 
@@ -22,5 +23,6 @@ public class Post {
     @Lob
     private String content;
 
+    @CreationTimestamp
     private Instant creationDate;
 }

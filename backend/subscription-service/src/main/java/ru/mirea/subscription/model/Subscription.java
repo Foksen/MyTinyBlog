@@ -2,6 +2,7 @@ package ru.mirea.subscription.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 
@@ -20,5 +21,6 @@ public class Subscription {
     @Column(unique = true)
     private String email;
 
+    @CreationTimestamp
     private Instant creationDate;
 }
