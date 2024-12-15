@@ -12,7 +12,7 @@ public class MailSenderService {
     @Autowired
     private JavaMailSender mailSender;
 
-    @Value("new.post.message.link")
+    @Value("${new.post.message.link}")
     private String link;
 
     public void sendNotification(String to, String title) {

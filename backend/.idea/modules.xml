@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/backend.iml" filepath="$PROJECT_DIR$/.idea/backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/context-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/context-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/gateway.main.iml" filepath="$PROJECT_DIR$/.idea/modules/gateway.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/post-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/post-service.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/subscription-service.main.iml" filepath="$PROJECT_DIR$/.idea/modules/subscription-service.main.iml" />

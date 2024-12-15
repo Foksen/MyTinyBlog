@@ -1,5 +1,6 @@
 package ru.mirea.context_service;
 
+import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,13 @@ public class FrontContextService {
 
     @Autowired
     private FrontContextRepository repository;
+
+    @PostConstruct
+    private void init() {
+        if (repository.findById(1).isEmpty()) {
+            repository.save(DEFAULT_FRONT_CONTEXT);
+        }
+    }
 
     public FrontContext getFrontContext() {
         if (repository.findById(1).orElse(null) == null) {

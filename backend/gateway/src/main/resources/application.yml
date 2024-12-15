@@ -4,18 +4,18 @@ spring:
       mvc:
         routes:
           - id: post-service-posts
-            uri: http://localhost:8081
+            uri: http://${POST_SERVICE_HOST}:${POST_SERVICE_PORT}
             predicates:
               - Path=/posts/**
           - id: subscription-service-subscriptions
-            uri: http://localhost:8082
+            uri: http://${SUBSCRIPTION_SERVICE_HOST}:${SUBSCRIPTION_SERVICE_PORT}
             predicates:
               - Path=/subscriptions/**
           - id: subscription-service-subscribers
-            uri: http://localhost:8082
+            uri: http://${SUBSCRIPTION_SERVICE_HOST}:${SUBSCRIPTION_SERVICE_PORT}
             predicates:
               - Path=/subscribers/**
           - id: context-service-front-context
-            url: http://localhost:8083
+            uri: http://${CONTEXT_SERVICE_HOST}:${CONTEXT_SERVICE_PORT}
             predicates:
               - Path=/context/**

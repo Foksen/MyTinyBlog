@@ -1,3 +1,2 @@
-config/prometheus.yml
-
-docker-compose-local.yml
+.env
+logs

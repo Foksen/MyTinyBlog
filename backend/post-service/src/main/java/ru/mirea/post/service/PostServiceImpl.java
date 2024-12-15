@@ -1,5 +1,6 @@
 package ru.mirea.post.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.mirea.post.client.SubscribersClient;
@@ -13,6 +14,7 @@ import java.time.Instant;
 import java.util.List;
 
 @Service
+@Slf4j
 public class PostServiceImpl implements PostService {
     @Autowired
     private PostRepository repository;
@@ -26,8 +28,12 @@ public class PostServiceImpl implements PostService {
             throw new PostAlreadyExistsException("Couldn't create a post with id = " + post.getId());
         }
         post.setCreationDate(Instant.now());
-        subscribersClient.notifySubscribers(new NotifySubscribersRequest(post.getTitle(), post.getContent()), token)
-                .block();
+        try {
+            subscribersClient.notifySubscribers(new NotifySubscribersRequest(post.getTitle(), post.getContent()), token)
+                    .block();
+        } catch (Exception e) {
+            log.error("Failed to notify subscribers, message: {}", e.getMessage());
+        }
         return repository.save(post);
     }
 

@@ -1,4 +1,4 @@
-const URL = "http://localhost:8080";
+const URL = "http://localhost/api";
 
 export const requestIsAuthorized = async (token) => {
   const uri = `${URL}/auth/is-authorized`;

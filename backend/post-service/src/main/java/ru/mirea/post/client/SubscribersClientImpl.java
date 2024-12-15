@@ -2,6 +2,7 @@ package ru.mirea.post.client;
 
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -14,12 +15,18 @@ public class SubscribersClientImpl implements SubscribersClient {
     @Autowired
     private WebClient.Builder webClientBuilder;
 
+    @Value("${gateway.host}")
+    private String host;
+
+    @Value("${gateway.port}")
+    private String port;
+
     private WebClient webClient;
 
     @PostConstruct
     public void init() {
         webClient = webClientBuilder
-                .baseUrl("http://localhost:8080/subscribers/notify")
+                .baseUrl(String.format("http://%s:%s/subscribers/notify", host, port))
                 .build();
     }
 
