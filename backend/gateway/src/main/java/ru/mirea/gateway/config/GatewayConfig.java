@@ -57,6 +57,7 @@ public class GatewayConfig {
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/subscriptions").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/subscriptions").permitAll()
+                        .requestMatchers("/context").permitAll()
                         .requestMatchers("/actuator/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
