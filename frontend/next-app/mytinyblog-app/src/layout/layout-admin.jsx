@@ -24,9 +24,10 @@ function AsidePanelLink({
   disabled,
   intent,
   handleSectionChange,
+  isHidden,
 }) {
   return (
-    <li onClick={handleSectionChange}>
+    <li onClick={handleSectionChange} className={clsx(isHidden && "hidden")}>
       <Button.Root
         variant={isActive ? "soft" : "ghost"}
         className={clsx(
@@ -98,7 +99,7 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
             icon={<IconLayers strokeWidth="4" />}
             isActive={currentSection == "monitoring"}
             handleSectionChange={() => handleSectionChange("monitoring")}
-            disabled
+            isHidden={true}
           />
 
           <Separator className="my-2 text-gray-800" fancy />
@@ -151,7 +152,7 @@ function AsidePanel({ handleSectionChange, currentSection, router }) {
 export function LayoutAdmin() {
   const [loading, setLoading] = useState(true);
 
-  const [currentSection, setCurrentSection] = useState("subscribers");
+  const [currentSection, setCurrentSection] = useState("posts");
 
   const router = useRouter();
 

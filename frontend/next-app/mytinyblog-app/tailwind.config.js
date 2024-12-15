@@ -1,4 +1,10 @@
-import { palettes, rounded, components, animations } from "@tailus/themer";
+import {
+  palettes,
+  rounded,
+  components,
+  animations,
+  visualizations,
+} from "@tailus/themer";
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -18,5 +24,5 @@ module.exports = {
       // }),
     },
   },
-  plugins: [components, rounded, animations],
+  plugins: [components, rounded, animations, visualizations],
 };

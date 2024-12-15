@@ -1,12 +1,10 @@
-import { Text, Title, Caption } from "@tailus-ui/typography";
+import { Title, Caption } from "@tailus-ui/typography";
 import Card from "@tailus-ui/Card";
-import clsx from "clsx";
 import Label from "@tailus-ui/Label";
 import Input from "@tailus-ui/Input";
 import Textarea from "@tailus-ui/Textarea";
 import Button from "@tailus-ui/Button";
 import { IconSave } from "../../../public/icons/icon-save";
-import { IconRefresh } from "../../../public/icons/icon-refresh";
 import RadioGroup from "@tailus-ui/RadioGroup";
 import Aligner from "@tailus-ui/Aligner";
 import Image from "next/image";
@@ -33,7 +31,7 @@ export function AdminSectionSettings() {
           Настройки блога
         </Title>
       </div>
-      <Card variant="soft" className="mt-8 bg-gray-925 border border-gray-800">
+      <Card variant="soft" className="mt-8 bg-gray-900 border border-gray-800">
         <Title>Информация о блоге</Title>
         <form className="mt-6">
           <div className="grid xl:grid-cols-2 gap-x-20 gap-y-8">

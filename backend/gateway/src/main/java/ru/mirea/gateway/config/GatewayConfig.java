@@ -20,6 +20,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import ru.mirea.gateway.filter.JwtAuthenticationFilter;
+import ru.mirea.gateway.filter.MetricsFilter;
 
 import java.util.List;
 
@@ -35,6 +36,9 @@ public class GatewayConfig {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
+    @Autowired
+    private MetricsFilter metricsFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http, UserDetailsService userDetailsService)
@@ -53,10 +57,12 @@ public class GatewayConfig {
                         .requestMatchers(HttpMethod.GET, "/posts/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/subscriptions").permitAll()
                         .requestMatchers(HttpMethod.DELETE, "/subscriptions").permitAll()
+                        .requestMatchers("/actuator/**").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider(userDetailsService))
-                .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(metricsFilter, JwtAuthenticationFilter.class);
         return http.build();
     }
 

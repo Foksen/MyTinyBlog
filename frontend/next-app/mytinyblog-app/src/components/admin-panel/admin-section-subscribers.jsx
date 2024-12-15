@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Text, Title } from "@tailus-ui/typography";
 import clsx from "clsx";
 import { ADMIN_PANEL_SUBSCRIBER_EMAIL_MAX_LEN } from "../../constants/admin-constants";
